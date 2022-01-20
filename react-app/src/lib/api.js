@@ -8,3 +8,7 @@ const genUrl = () => `${protocol}://${baseUrl}`;
 export const postFormData = (formData) => {
   return axios.post(genUrl(), formData);
 }
+
+export const getUsers = () => {
+  return axios.get(genUrl());
+}

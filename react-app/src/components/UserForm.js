@@ -1,5 +1,5 @@
 import React from "react";
-import {postFormData} from "../lib/api";
+import {postFormData, getUsers} from "../lib/api";
 import Swal from 'sweetalert2';
 
 class UserForm extends React.Component {
@@ -47,7 +47,8 @@ class UserForm extends React.Component {
     try {
       await postFormData(formData);
       e.target.reset();
-      return Swal.fire(`User created. Go ahead and create more!`, '', 'success');
+      const {data} = await getUsers();
+      return Swal.fire(`User created. You now have ${data.length} users. Go ahead and create more!`, '', 'success');
     } catch (e) {
       console.log(e);
       return Swal.fire('Something did not go right. Are you sure all data is form fields are filled?', '', 'error');
