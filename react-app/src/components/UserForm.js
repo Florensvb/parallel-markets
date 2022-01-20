@@ -1,4 +1,6 @@
 import React from "react";
+import {postFormData} from "../lib/api";
+import Swal from 'sweetalert2';
 
 class UserForm extends React.Component {
 
@@ -42,11 +44,13 @@ class UserForm extends React.Component {
   async onSubmit (e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(formData);
     try {
+      await postFormData(formData);
       e.target.reset();
+      return Swal.fire(`User created. Go ahead and create more!`, '', 'success');
     } catch (e) {
       console.error(e);
+      return Swal.fire('Something did not go right', '', 'error');
     }
   }
 
@@ -63,7 +67,7 @@ class UserForm extends React.Component {
                     {options.map(option => (<option key={option} value={option}>{option}</option>))}
                   </select>
                   :
-                  <input required type={type} name={name} />
+                  <input type={type} name={name} />
                 }
               </label>
               <br/>
