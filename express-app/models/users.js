@@ -6,42 +6,64 @@ Users.init({
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   dateOfBirth: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
     isDate: true,
   },
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   streetAddress: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   state: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   zipCode: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
+    validate: {
+      notNull: true,
+      notEmpty: true,
+    },
   },
   file: {
     type: DataTypes.STRING,
     allowNull: false,
+    notNull: true,
     notEmpty: true,
   },
 }, { sequelize, modelName: 'user' });

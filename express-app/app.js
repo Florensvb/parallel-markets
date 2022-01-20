@@ -1,9 +1,14 @@
+// Load environment variables
 require('dotenv').config({path: './.env.local'});
+
+const Users = require('./models/users');
+
+// Create express.js server
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
-const Users = require('./models/users');
 
+// Initialise formidable
 const formidable = require('express-formidable');
 app.use(formidable());
 
@@ -15,10 +20,11 @@ app.post('/', async (req, res) => {
     res.send(user);
   } catch (e) {
     console.error(e);
-    res.status(500).send('Something did not work here');
+    // Assuming it's the user's fault. Should split between sequelize errors and 5xx
+    res.status(422).send(e);
   }
 });
 
 app.listen(port, () => {
-  console.log(`Parallelmarkets API listening at http://localhost:${port}`)
+  console.log(`Parallelmarkets API listening at http://localhost:${port}`);
 });
