@@ -49,8 +49,8 @@ class UserForm extends React.Component {
       e.target.reset();
       return Swal.fire(`User created. Go ahead and create more!`, '', 'success');
     } catch (e) {
-      console.error(e);
-      return Swal.fire('Something did not go right', '', 'error');
+      console.log(e);
+      return Swal.fire('Something did not go right. Are you sure all data is form fields are filled?', '', 'error');
     }
   }
 
