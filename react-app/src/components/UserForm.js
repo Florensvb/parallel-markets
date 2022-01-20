@@ -68,7 +68,7 @@ class UserForm extends React.Component {
                     {options.map(option => (<option key={option} value={option}>{option}</option>))}
                   </select>
                   :
-                  <input type={type} name={name} />
+                  <input required type={type} name={name} />
                 }
               </label>
               <br/>
