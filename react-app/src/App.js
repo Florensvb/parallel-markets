@@ -1,5 +1,6 @@
 import logo from './logo.png';
 import './App.css';
+import UserForm from './components/UserForm';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           Florens@Parallelmarkets
         </p>
         <img src={logo} className="App-logo" alt="logo" />
+        <UserForm/>
       </header>
     </div>
   );
