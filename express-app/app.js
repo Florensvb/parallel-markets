@@ -25,6 +25,18 @@ app.post('/', async (req, res) => {
   }
 });
 
+app.get('/', async function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', process.env.REACT_APP_URL || 'http://localhost:3000');
+
+  try {
+    const users = await Users.findAllInstances();
+    res.send(users);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e);
+  }
+})
+
 app.listen(port, () => {
   console.log(`Parallelmarkets API listening at http://localhost:${port}`);
 });
